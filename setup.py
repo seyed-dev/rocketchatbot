@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name="rocketchatbot",
+    name="rocketpybot",
     version="0.0.1",
     url="https://github.com/seyed-dev/rocketpybot",
     license="MIT",

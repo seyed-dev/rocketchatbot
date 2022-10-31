@@ -1,0 +1,25 @@
+# pyproject.toml
+
+[project]
+name = "rocketpybot"
+version = "0.0.1"
+description = "Python lib for create rocketchat bot with getupdate like TelegramBots"
+readme = "README.md"
+authors = [{ name = "SeYeD Mohammad Khoshnava | seyed.dev", email = "me@seyed.dev" }]
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["rocketchat", "bot", "rocket.chat"]
+dependencies = [
+    "rocketchat-API",
+]
+requires-python = ">=3.9"
+
+[project.urls]
+Homepage = "https://github.com/seyed-dev/rocketchatbot"
+
+[project.scripts]
+realpython = "reader.__main__:main"
