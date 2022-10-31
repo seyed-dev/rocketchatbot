@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/rocketpybot.iml" filepath="$PROJECT_DIR$/.idea/rocketpybot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../pyrocketbot/.idea/rocketpybot.iml" filepath="$PROJECT_DIR$/../pyrocketbot/.idea/rocketpybot.iml" />
     </modules>
   </component>
 </project>

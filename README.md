@@ -5,7 +5,7 @@
 ### Installation
 
 ```bash
-pip install rocketpybot
+pip install pyrocketbot
 ```
 
 ### Usage
