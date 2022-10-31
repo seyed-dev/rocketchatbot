@@ -24,6 +24,7 @@ proxy_dict = {
 }
 
 bot = RocketBot(username, password, server_url)
+# bot = RocketBot(username, password, server_url, proxy_dict=proxy_dict)
 
 
 @bot.command(r'/start')
