@@ -1,7 +1,7 @@
 # pyproject.toml
 
 [project]
-name = "rocketpybot"
+name = "pyrocketbot"
 version = "0.0.1"
 description = "Python lib for create rocketchat bot with getupdate like TelegramBots"
 readme = "README.md"
