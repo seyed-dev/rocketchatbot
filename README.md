@@ -1,6 +1,7 @@
 # RocketPyBot
 
 ## Python lib for create rocketchat bot with getupdate like TelegramBots
+### This library is based on [rocketchat_API](https://github.com/jadolg/rocketchat_API)
 
 ### Installation
 
