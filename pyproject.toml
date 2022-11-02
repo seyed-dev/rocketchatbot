@@ -2,7 +2,7 @@
 
 [project]
 name = "pyrocketbot"
-version = "1.0.0"
+version = "1.0.1"
 description = "Python lib for create rocketchat bot with getupdate like TelegramBots"
 readme = "README.md"
 authors = [{ name = "SeYeD Mohammad Khoshnava | seyed.dev", email = "me@seyed.dev" }]

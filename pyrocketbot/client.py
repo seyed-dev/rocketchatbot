@@ -8,9 +8,9 @@ from rocketchat_API.rocketchat import RocketChat
 class RocketBot(RocketChat):
     def __init__(self, username, password, server_url, proxy_dict=None, threading_updates=False):
         super().__init__()
+        self.bot_username = username
         self.session = RocketChat(username, password, server_url=server_url, proxies=proxy_dict)
         self._commands = {}
-        self._report_http_err = True
         self._threading = threading_updates
 
     def command(self, regex):
@@ -33,7 +33,7 @@ class RocketBot(RocketChat):
                 for result in updates:
                     if result['t'] == chat_type:
                         for message in self.session.im_history(result['rid']).json()['messages']:
-                            if message['_id'] in ids:
+                            if message['_id'] in ids or message['u']['username'] == self.bot_username:
                                 continue
                             ids.append(message['_id'])
 
