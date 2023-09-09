@@ -24,16 +24,30 @@ class RocketBot(RocketChat):
     def get_updates(self):
         return self.session.subscriptions_get().json()['update']
 
-    def run(self, chat_type='d', sleep=0):
+    def run(self, chat_type='', sleep=0):
         ids = collections.deque(maxlen=10000)
         while True:
             updates = self.get_updates()
 
             if updates:
                 for result in updates:
+                    chat_type = result['t']
+                    room_id = result['rid']
+
+                    # Check if it's a direct message or a channel message
+                    if chat_type == "d":
+                        # Retrieve message history for direct messages
+                        messages = self.session.im_history(room_id).json()['messages']
+                    elif chat_type == "c":
+                        # Retrieve message history for channels
+                        messages = self.session.channels_history(room_id).json()['messages']
+                    else:
+                        # Handle other types of chats if needed
+                        continue
+
                     try:
                         if result['t'] == chat_type:
-                            for message in self.session.im_history(result['rid']).json()['messages']:
+                            for message in messages:
                                 if message['_id'] in ids or message['u']['username'] == self.bot_username:
                                     continue
                                 ids.append(message['_id'])
