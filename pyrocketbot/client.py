@@ -31,30 +31,33 @@ class RocketBot(RocketChat):
 
             if updates:
                 for result in updates:
-                    if result['t'] == chat_type:
-                        for message in self.session.im_history(result['rid']).json()['messages']:
-                            if message['_id'] in ids or message['u']['username'] == self.bot_username:
-                                continue
-                            ids.append(message['_id'])
+                    try:
+                        if result['t'] == chat_type:
+                            for message in self.session.im_history(result['rid']).json()['messages']:
+                                if message['_id'] in ids or message['u']['username'] == self.bot_username:
+                                    continue
+                                ids.append(message['_id'])
 
-                            def response_update():
-                                if message.get('unread', False):
-                                    for k, v in self._commands.items():
-                                        regex = re.compile(k, flags=re.MULTILINE | re.DOTALL)
-                                        m = regex.match(message['msg'])
+                                def response_update():
+                                    if message.get('unread', False):
+                                        for k, v in self._commands.items():
+                                            regex = re.compile(k, flags=re.MULTILINE | re.DOTALL)
+                                            m = regex.match(message['msg'])
 
-                                        if m:
-                                            match_list = []
-                                            for x in m.groups():
-                                                match_list.append(x)
-                                            try:
-                                                v(message, match_list)
-                                            except TypeError:
-                                                v(message)
+                                            if m:
+                                                match_list = []
+                                                for x in m.groups():
+                                                    match_list.append(x)
+                                                try:
+                                                    v(message, match_list)
+                                                except TypeError:
+                                                    v(message)
 
-                            if self._threading:
-                                threading.Thread(target=response_update).start()
-                            else:
-                                response_update()
+                                if self._threading:
+                                    threading.Thread(target=response_update).start()
+                                else:
+                                    response_update()
+                    except Exception as e:
+                        print(e)
 
             time.sleep(sleep)
