@@ -8,7 +8,6 @@ from datetime import datetime, timezone
 
 class RocketBot(RocketChat):
     _commands = {}
-    last_processed_timestamp = None
     
     def __init__(self, username, password, server_url, proxy_dict=None, threading_updates=False):
         super().__init__()
